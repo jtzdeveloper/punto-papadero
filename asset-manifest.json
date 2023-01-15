@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/punto-papadero/static/css/main.b6f1bb74.css",
-    "main.js": "/punto-papadero/static/js/main.8943dcac.js",
+    "main.css": "/punto-papadero/static/css/main.6870b604.css",
+    "main.js": "/punto-papadero/static/js/main.0ba67b89.js",
     "static/js/787.39175719.chunk.js": "/punto-papadero/static/js/787.39175719.chunk.js",
+    "static/media/logo.svg": "/punto-papadero/static/media/logo.4f01deedf8c892394a39542006bab2b0.svg",
     "index.html": "/punto-papadero/index.html",
-    "main.b6f1bb74.css.map": "/punto-papadero/static/css/main.b6f1bb74.css.map",
-    "main.8943dcac.js.map": "/punto-papadero/static/js/main.8943dcac.js.map",
+    "main.6870b604.css.map": "/punto-papadero/static/css/main.6870b604.css.map",
+    "main.0ba67b89.js.map": "/punto-papadero/static/js/main.0ba67b89.js.map",
     "787.39175719.chunk.js.map": "/punto-papadero/static/js/787.39175719.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b6f1bb74.css",
-    "static/js/main.8943dcac.js"
+    "static/css/main.6870b604.css",
+    "static/js/main.0ba67b89.js"
   ]
 }
