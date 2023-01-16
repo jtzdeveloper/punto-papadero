@@ -9,7 +9,7 @@ import ScreenNewOrder from './components/ScreenNewOrder'
 import ScreenProductsByCategory from './components/ScreenProductsByCategory'
 import { useState } from 'react';
 function App() {
-  const [takeOrder, setTakeOrder] = useState([])
+  const [takeOrder, setTakeOrder] = useState({ line_items:[] })
   const takesOrders = { takeOrder,setTakeOrder}
   return (
    <div className="bg-gray-900 min-h-screen flex items-center justify-center">

@@ -1,7 +1,6 @@
 {
   "name": "papadero",
   "version": "0.1.0",
-  "homepage": "/punto-papadero/",
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "^4.22.0",

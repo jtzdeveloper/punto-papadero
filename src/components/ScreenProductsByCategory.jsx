@@ -2,15 +2,36 @@ import { useParams,useMatch } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import getProductsByCategory  from '../services/woocommerceProducts'
 import  HeadInfo  from './HeadInfo'
+import Button from './Button'
 import Loading from './Loading'
-export default function ScreenProductsByCategory({takeOrder}){
+export default function ScreenProductsByCategory({takeOrder,setTakeOrder}){
      const { id_category } = useParams()
      const { isLoading,data,isError,error,isFetching  } = useQuery({
         queryKey:['productsByCategory'],
         queryFn: ()=> getProductsByCategory(id_category)
     })   
     
-    console.log(takeOrder)
+    const takeOrderAddProduct = (product) => {
+        let { line_items } = takeOrder
+        if(line_items.find(currentProduct=>currentProduct.id === product.id)){
+            const newLineItems = line_items.map(currentProduct => currentProduct.id ===  product.id 
+                ? ({
+                   ...currentProduct,
+                   quantitySelected:currentProduct.quantitySelected + 1 
+                })
+                : currentProduct)
+            return setTakeOrder({line_items: newLineItems})  
+        }
+        return setTakeOrder({
+            line_items:takeOrder.line_items.concat({
+                ...product,
+                quantitySelected:1
+            })
+        })
+    }
+
+
+
      return (
        
         <div className="h-[calc(100vh-260px)] over">
@@ -28,8 +49,8 @@ export default function ScreenProductsByCategory({takeOrder}){
                      <p className="text-white/50">{ product.price } </p> 
                      {
                         product.type === 'simple' ?
-                     <button className='w-1/2 h-10  m-1 rounded bg-slate-500 text-white font-bold'>agregar</button>:
-                     <button className='w-1/2 h-10  m-1 rounded bg-slate-500 text-white font-bold'>ver mas</button>
+                     <Button onClick={()=>takeOrderAddProduct(product)}>agregar</Button>:
+                     <Button>ver mas</Button>
                     }
                     {/* <p className="absolute top-2 text-white/20 inline-flex items-center text-xs">22 Online <span class="ml-2 w-2 h-2 block bg-green-500 rounded-full group-hover:animate-pulse"></span></p> */}
                   </div>
