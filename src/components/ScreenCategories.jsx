@@ -12,9 +12,9 @@ export default function ScreenCategories(){
 
   
   return (
-        <div className="h-[calc(100vh-260px)] overflow-y-auto ">
+        <div className=" ">
               <div className="flex justify-between items-center">
-                <h3 className="text-3xl font-bold text-white ">Seleccione una Categoria</h3>
+                <h3 className="text-2xl font-bold text-white ">Seleccione una Categoria</h3>
                 <div className="inline-flex items-center space-x-2">
                   <a className="bg-gray-900 text-white/50 p-2 rounded-md hover:text-white smooth-hover" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -28,21 +28,23 @@ export default function ScreenCategories(){
                   </a>
                 </div>
               </div>
-              { isLoading  ? <Loading message={'Cargando Categorias'}/> :  
-              <div className="mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                
+              <div className="h-[calc(100vh-110px)] overflow-y-auto">
+              { isLoading  ? <Loading message={'Cargando Categorias'}/> :
+              <div className=" mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {
                     data.map(category => (
                       <Link img={category.image} key={category.name} to={`productsByCategory/${category.id}`} className="relative  group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover">
-                      <img className="w-20 h-20 object-cover object-center rounded-2xl" src={category.image !== null ? category.image.src : ''} alt="cuisine" />
+                      <img className="w-16 h-16 object-cover object-center rounded-2xl" src={category.image !== null ? category.image.src : ''} alt="cuisine" />
                       <h4 className="text-white text-xl font-bold capitalize text-center">{category.name}</h4>
                       <p className="text-white/50">{ category.count } Productos</p>
                       <p className="absolute top-2 text-white/20 inline-flex items-center text-xs">22 Online <span className="ml-2 w-2 h-2 block bg-green-500 rounded-full group-hover:animate-pulse"></span></p>
                     </Link>
                     ))
                 }
-              
               </div>
-            }
+              
+            }</div>
         </div>    
     )
 }
