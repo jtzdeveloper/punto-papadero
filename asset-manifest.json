@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/punto-papadero/static/css/main.f2e08d64.css",
-    "main.js": "/punto-papadero/static/js/main.0cbf2036.js",
+    "main.js": "/punto-papadero/static/js/main.7988c169.js",
     "static/js/787.39175719.chunk.js": "/punto-papadero/static/js/787.39175719.chunk.js",
     "static/media/logo.svg": "/punto-papadero/static/media/logo.4f01deedf8c892394a39542006bab2b0.svg",
     "index.html": "/punto-papadero/index.html",
     "main.f2e08d64.css.map": "/punto-papadero/static/css/main.f2e08d64.css.map",
-    "main.0cbf2036.js.map": "/punto-papadero/static/js/main.0cbf2036.js.map",
+    "main.7988c169.js.map": "/punto-papadero/static/js/main.7988c169.js.map",
     "787.39175719.chunk.js.map": "/punto-papadero/static/js/787.39175719.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2e08d64.css",
-    "static/js/main.0cbf2036.js"
+    "static/js/main.7988c169.js"
   ]
 }
