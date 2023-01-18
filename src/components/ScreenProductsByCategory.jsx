@@ -45,16 +45,24 @@ export default function ScreenProductsByCategory({takeOrder,setTakeOrder}){
             <div className='h-[calc(100vh-110px)] overflow-y-auto'>
             {
                 isLoading || isFetching ? <Loading message={'Cargando Productos'} /> :
-                <div className='mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3'>
+                <div className='mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-2'>
                 {
                     data.map(product=>(
-                        <section key={product.id} className='flex flex-col bg-slate-900 rounded px-2'> 
+                        <section key={product.id} className='flex flex-col bg-slate-900 rounded-xl px-2'> 
                             <div className='flex py-5'>
-                                <img className="w-12 h-12 object-cover object-center rounded" src={product.images.at(-1).src} alt="cuisine" />
+                                <img className="w-12 h-12 xl:w-20 xl:h-20 object-cover object-center rounded" src={product.images.at(-1).src} alt="cuisine" />
                             </div>
                             <div className='flex flex-col'>
-                                <h5 className="text-white text-xs   capitalize ">{ product.name }</h5>
-                                <span className="text-xl pb-5 font-bold text-gray-900 dark:text-white">${product.price}</span>
+                                <h5 className="text-white text-xs xl:text-xl capitalize ">{ product.name }</h5>
+                                
+                                 <section className='flex justify-between'>
+                                    <span className="text-xl  pb-5 font-bold text-gray-900 dark:text-white">${product.price}</span>
+                                    {
+                                        product.type === 'simple' ?
+                                        <Button onClick={()=>takeOrderAddProduct(product)}>agregar </Button>:
+                                        <Button>opciones</Button>
+                                    }
+                                 </section>
                             </div>
                         </section>
                     /*     <div className="relative  group bg-gray-900 py-10 sm:py-20 px-4 flex flex-col space-y-2 items-center cursor-pointer rounded-md hover:bg-gray-900/80 hover:smooth-hover" key={product.name}  >
