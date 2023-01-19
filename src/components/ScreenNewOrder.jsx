@@ -21,7 +21,7 @@ export default function ScreenNewOrder({ takeOrder }){
                   </a>
                 </div>
               </div>
-              <section className="w-full  flex items-center overflow-y-scroll flex-col xl:flex-row gap-1    ">
+              <section className="w-full  h-[calc(100vh-194px)]  flex items-center  flex-col xl:flex-row gap-1    ">
               <section className="bg-slate-900  sm:h-[calc(100vh-400px)]   overflow-y-auto w-full  xl:w-1/2  rounded-xl text-sm mt-10 border-separate text-gray-400 ">
                     {
                       takeOrder.line_items.map((product)=>(
