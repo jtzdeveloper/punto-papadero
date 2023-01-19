@@ -6,7 +6,7 @@ export default function ScreenNewOrder({ takeOrder }){
   console.log(takeOrder)
   return (
         <div className="">
-              <div className="flex justify-between items-center">
+          {/*     <div className="flex justify-between items-center">
                 <h3 className="text-2xl font-bold text-white ">Nueva Orden</h3>
                 <div className="inline-flex items-center space-x-2">
                   <a className="bg-gray-900 text-white/50 p-2 rounded-md hover:text-white smooth-hover" href="#">
@@ -50,7 +50,7 @@ export default function ScreenNewOrder({ takeOrder }){
                     }
                     
                 </section>
-               {/*  <section className='bg-slate-900 h-[calc(100vh-635px)] flex flex-col w-full xl:w-1/2 rounded-xl  mt-10 border-separate text-gray-400'>
+             <section className='bg-slate-900 h-[calc(100vh-635px)] flex flex-col w-full xl:w-1/2 rounded-xl  mt-10 border-separate text-gray-400'>
                     <section className='bg-gray-800 h-[calc(100vh-450px)] sm:h-[calc(100vh-640px)]   m-1 rounded-xl flex flex-col gap-5 '>
                       <div className='flex justify-between'>
                          <h3 className="text-2xl font-serif text-white ">Total de items</h3>
@@ -69,8 +69,8 @@ export default function ScreenNewOrder({ takeOrder }){
                     
               
                
-                </section> */}
-              </section>
+                </section> 
+              </section> */}
         </div>
         
     )
