@@ -21,9 +21,9 @@ export default function ScreenNewOrder({ takeOrder }){
                   </a>
                 </div>
               </div>
-              <section className="h-[calc(100vh-110px)] w-full flex items-center flex-col xl:flex-row gap-3    ">
+              <section className="w-full h-full flex items-center flex-col xl:flex-row gap-1    ">
                 
-                <section className="bg-slate-900 h-full overflow-y-auto w-full  xl:w-1/2  rounded-xl text-sm mt-10 border-separate text-gray-400 ">
+                <section className="bg-slate-900 h-[calc(100vh-700px)] sm:h-[calc(100vh-400px)]   overflow-y-auto w-full  xl:w-1/2  rounded-xl text-sm mt-10 border-separate text-gray-400 ">
                     {
                       takeOrder.line_items.map((product)=>(
                         <section className="bg-gray-800 rounded-lg mt-1 ml-1 mr-1 font-bold  ">
@@ -50,8 +50,8 @@ export default function ScreenNewOrder({ takeOrder }){
                     }
                     
                 </section>
-                <section className='bg-slate-900 h-full  flex flex-col w-full xl:w-1/2 rounded-xl  mt-10 border-separate text-gray-400'>
-                    <section className='bg-gray-800 h-96 m-1 rounded-xl flex flex-col gap-5 '>
+                <section className='bg-slate-900 h-[calc(100vh-630px)] flex flex-col w-full xl:w-1/2 rounded-xl  mt-10 border-separate text-gray-400'>
+                    <section className='bg-gray-800 h-[calc(100vh-450px)] sm:h-[calc(100vh-640px)]   m-1 rounded-xl flex flex-col gap-5 '>
                       <div className='flex justify-between'>
                          <h3 className="text-2xl font-serif text-white ">Total de items</h3>
                           <h3 className='text-2xl font-serif text-white'>4</h3>
