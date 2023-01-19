@@ -21,11 +21,11 @@ export default function ScreenNewOrder({ takeOrder }){
                   </a>
                 </div>
               </div>
-              <section className="w-full h-[calc(100vh-145px)] flex items-center flex-col xl:flex-row gap-1    ">
-              <section className="bg-slate-900 h-[calc(100vh-400px)] sm:h-[calc(100vh-400px)]   overflow-y-auto w-full  xl:w-1/2  rounded-xl text-sm mt-10 border-separate text-gray-400 ">
+              <section className="w-full min-h-[600px%] flex items-center flex-col xl:flex-row gap-1    ">
+              <section className="bg-slate-900  sm:h-[calc(100vh-400px)]   overflow-y-auto w-full  xl:w-1/2  rounded-xl text-sm mt-10 border-separate text-gray-400 ">
                     {
                       takeOrder.line_items.map((product)=>(
-                        <section className="bg-gray-800 rounded-lg mt-1 ml-1 mr-1 font-bold  ">
+                        <section key={ product.id } className="bg-gray-800 rounded-lg mt-1 ml-1 mr-1 font-bold  ">
                         <div className="p-3 flex gap-10 justify-between">
                           <div class="flex align-items-center">
 								            <img class="rounded-full h-12 w-12  object-cover" src={product.images.at(-1).src} alt="unsplash image" />

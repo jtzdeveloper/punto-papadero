@@ -29,7 +29,7 @@ export default function ScreenCategories(){
                 </div>
               </div>
                 
-              <div className="h-[calc(100vh-110px)] overflow-y-auto">
+              <div className="h-[calc(100vh-145px)] sm:h-[calc(100vh-200px)] lg:h-[calc(100vh-110px)] overflow-y-auto">
               { isLoading  ? <Loading message={'Cargando Categorias'}/> :
               <div className=" mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {
