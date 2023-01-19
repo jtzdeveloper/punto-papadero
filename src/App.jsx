@@ -11,7 +11,7 @@ import { useState } from 'react';
 function App() {
   const [takeOrder, setTakeOrder] = useState({ line_items:[] })
   return (
-   <div className="bg-gray-900 h-full flex items-start justify-center overflow-visible  overflow-y-hidden">
+   <div className="bg-gray-900 h-screen flex items-start justify-center overflow-visible  overflow-y-hidden">
       <div className="bg-gray-800  flex-1 flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-5 overflow-y-hidden  max-w-6xl sm:p-6 sm:my-2 sm:mx-4 sm:rounded-2xl">
         <Nav takeOrder={ takeOrder }/>
         <Screen>
