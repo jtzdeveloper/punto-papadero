@@ -21,8 +21,8 @@ export default function ScreenNewOrder({ takeOrder }){
                   </a>
                 </div>
               </div>
-              <section className="w-full  h-[calc(100vh-150px)]  flex items-center  flex-col xl:flex-row gap-1    ">
-              <section className="bg-slate-900 h-[calc(100vh-200px)]  sm:h-[calc(100vh-400px)]   overflow-y-auto w-full  xl:w-1/2  rounded-xl text-sm mt-10 border-separate text-gray-400 ">
+              <section className="w-full  h-[calc(100vh-150px)] sm:h-[calc(100vh-200px)] lg:h-[calc(100vh-200px)] xl:h-full  flex items-center  flex-col xl:flex-row gap-1    ">
+              <section className="bg-slate-900 h-[calc(100vh-200px)] sm:h-[calc(100vh-200px)] lg:h-[calc(100vh-400px)] xl:h-[calc(100vh-150px)]    overflow-y-auto w-full  xl:w-1/2  rounded-xl text-sm mt-10 border-separate text-gray-400 ">
                     {
                       takeOrder.line_items.map((product)=>(
                         <section key={ product.id } className="bg-gray-800 rounded-lg mt-1 ml-1 mr-1 font-bold  ">
@@ -49,12 +49,22 @@ export default function ScreenNewOrder({ takeOrder }){
                     }
                     
                 </section>
-                <section className='bg-slate-900 h-[calc(100vh-200px)] flex flex-col w-full xl:w-1/2 rounded-xl    border-separate text-gray-400'>
-               
-                    
-              
-               
+                <section className='bg-slate-900 h-[calc(100vh-400px)] sm:h-[calc(100vh-200px)] flex gap-5 flex-col justify-center xl:justify-start  w-full xl:w-1/2 rounded-xl    border-separate text-gray-400'>
+                    <section className='flex flex-col gap-5 bg-slate-800 py-5 px-10 m-1 rounded'>
+                    <div className='flex justify-between'>
+                        <section>TOTAL DE ITEMS</section>
+                        <section>4</section>
+                    </div>
+                    <div className='flex justify-between'>
+                        <section>TOTAL A CONFIRMAR</section>
+                        <section>$4.000</section>
+                    </div>
+                    <div className='flex justify-center'>
+                        <Button>Confirmar</Button>
+                        <Button>Limpiar</Button>
+                    </div>
                 </section> 
+                </section>
               </section>
         </>
         
