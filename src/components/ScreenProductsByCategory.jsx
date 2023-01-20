@@ -2,6 +2,7 @@ import { useParams,useMatch } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import getProductsByCategory  from '../services/woocommerceProducts'
 import  HeadInfo  from './HeadInfo'
+import TitlePage from './globals/TitlePage'
 import Button from './Button'
 import Loading from './Loading'
 import { useEffect, useState } from 'react'
@@ -39,7 +40,7 @@ export default function ScreenProductsByCategory({takeOrder,setTakeOrder}){
 
      return (
         <div className="">
-            <HeadInfo title={'Products'} />
+            <TitlePage>Productos</TitlePage>
             
             
             <div className='h-[calc(100vh-110px)] overflow-y-auto'>

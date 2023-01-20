@@ -1,13 +1,18 @@
-import iconEdit from '../assets/icons/edit.svg'
 import iconDelete from '../assets/icons/delete.svg'
-import {formatterPeso} from '../utils'
+import {formatterPeso, getTakeOrderTotal,getTakeOrderTotalItems} from '../utils'
 import Button from '../components/Button'
-export default function ScreenNewOrder({ takeOrder }){
-  console.log(takeOrder)
+ import ButtonEdit from './globals/Buttons/ButtonEdit'
+ import ButtonDelete from './globals/Buttons/ButtonDelete'
+import TitlePage from './globals/TitlePage'
+export default function ScreenNewOrder({takeOrder,setTakeOrder}){
+  const takeOrderTotal = getTakeOrderTotal({takeOrder})
+  const takeOrderTotalItems = getTakeOrderTotalItems({takeOrder})
+  const cleanTakeOrder = () => setTakeOrder({line_items:[]}) 
+  
   return (
         <>
            <div className="flex justify-between items-center">
-                <h3 className="text-3xl font-extralight text-white/50 ">Nueva Orden</h3>
+                <TitlePage>Nueva Orden</TitlePage>
                 <div className="inline-flex items-center space-x-2">
                   <a className="bg-gray-900 text-white/50 p-2 rounded-md hover:text-white smooth-hover" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -26,42 +31,38 @@ export default function ScreenNewOrder({ takeOrder }){
                     {
                       takeOrder.line_items.map((product)=>(
                         <section key={ product.id } className="bg-gray-800 rounded-lg mt-1 ml-1 mr-1 font-bold  ">
-                        <div className="p-3 flex gap-10 justify-between">
-                          <div class="flex align-items-center">
-								            <img class="rounded-full h-12 w-12  object-cover" src={product.images.at(-1).src} alt="unsplash image" />
-								            <div class="ml-3">
-									            <div class="">{product.name}</div>
-									            <div class="text-gray-500">{product.categories.at(-1).name}</div>
-								            </div>
-							            </div>
-                          <div className="flex justify-center items-center">{product.quantitySelected} x { formatterPeso.format(product.price)}</div>
-                          <div className="p-3 flex">
-                            <a href="#" className="text-gray-400 hover:text-gray-100 mx-2">
-                              <img src={iconEdit} alt="edit" width={20} height={20} />
-                            </a>
-                            <a href="#" className="text-gray-400 hover:text-gray-100 ml-2">
-                              <img src={iconDelete} alt="edit" width={20} height={20} />
-                            </a>
-						              </div>
-                        </div>
-                    </section>
+                          <div className="p-3 flex gap-10 justify-between">
+                            <div className="flex align-items-center">
+                              <img className="rounded-full h-12 w-12  object-cover" src={product.images.at(-1).src} alt="unsplash image" />
+                              <div className="ml-3">
+                                <div className="">{product.name}</div>
+                                <div className="text-gray-500">{product.categories.at(-1).name}</div>
+                              </div>
+                            </div>
+                            <div className="flex justify-center items-center">{product.quantitySelected} x { formatterPeso.format(product.price)}</div>
+                            <div className="p-3 flex gap-3 ">
+                              <ButtonEdit></ButtonEdit>
+                              <ButtonDelete></ButtonDelete>
+                            </div>
+                          </div>
+                        </section>
                       ))
                     }
                     
                 </section>
                 <section className='bg-slate-900 h-[calc(100vh-400px)] sm:h-[calc(100vh-200px)] flex gap-5 flex-col justify-center xl:justify-start  w-full xl:w-1/2 rounded-xl    border-separate text-gray-400'>
-                    <section className='flex flex-col gap-5 bg-slate-800 py-5 px-10 m-1 rounded'>
+                    <section className='flex flex-col gap-5  bg-slate-800 py-5 px-10 m-1 rounded font-bold'>
                     <div className='flex justify-between'>
                         <section>TOTAL DE ITEMS</section>
-                        <section>4</section>
+                        <section>{takeOrderTotalItems}</section>
                     </div>
                     <div className='flex justify-between'>
                         <section>TOTAL A CONFIRMAR</section>
-                        <section>$4.000</section>
+                        <section>{ formatterPeso.format(takeOrderTotal)} </section>
                     </div>
                     <div className='flex justify-center'>
                         <Button>Confirmar</Button>
-                        <Button>Limpiar</Button>
+                        <Button onClick={()=>cleanTakeOrder()}>Limpiar</Button>
                     </div>
                 </section> 
                 </section>
