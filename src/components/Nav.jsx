@@ -1,10 +1,18 @@
 import { Link, useLocation } from "react-router-dom"
+import { QueryClient, useQueryClient,useQuery } from "@tanstack/react-query"
 import BubbleAlert from './BubbleAlert'
 import { getTakeOrderTotalItems } from '../utils/'
+import { useState } from "react"
 export default function Nav({ takeOrder }){
+    const [countOrderPending,setCountOrderPending] = useState(0)
     const pathname = useLocation().pathname
     const takeOrderTotalItems = getTakeOrderTotalItems({ takeOrder })
-    
+ const queryClient = useQueryClient() 
+   const data = queryClient.getQueriesData('ordersPending') 
+    console.log(data) 
+     
+/*   const countOrdersPending = data === [] ? data[0][1].length : 0 
+    console.log */
     return (
             <div className="bg-gray-900 px-2  py-2 lg:flex-col  sm:rounded-xl flex  justify-between">
                 <nav className="flex items-center flex-row space-x-2 lg:space-x-0 lg:flex-col ">
@@ -22,10 +30,14 @@ export default function Nav({ takeOrder }){
                         </div>
                        
                     </Link>
-                    <Link to={'ordersPending'} className={`${ pathname === '/orders' ? 'bg-gray-800' : '' } text-white/50 p-4 inline-flex justify-center rounded-md hover:bg-gray-800 hover:text-white smooth-hover`} href="#">
+                    <Link to={'ordersPending'} className={`${ pathname === '/orders' ? 'bg-gray-800' : '' } text-white p-4 inline-flex justify-center rounded-md hover:bg-gray-800 hover:text-white smooth-hover`} href="#">
+                        <div className="relative">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                         </svg>
+                        <BubbleAlert countProducts={countOrderPending} />
+                        </div>
+                        
                     </Link>
                 </nav>
                 <div className="flex items-center flex-row space-x-2 lg:space-x-0 lg:flex-col lg:space-y-2 ">

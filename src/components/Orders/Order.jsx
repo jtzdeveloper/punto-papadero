@@ -1,13 +1,14 @@
 import pathOrder from '../../assets/icons/order.svg'
 import ButtonEdit from '../globals/Buttons/ButtonEdit'
 import ButtonDelete from '../globals/Buttons/ButtonDelete'
+import { Link } from 'react-router-dom'
 import { formatterPeso } from '../../utils'
-export default function Order({order}){
+export default function Order({ order,deleteOrderMutation }){
     console.log(order)
-    const { id,billing,total,first_name } = order
+    const { id,billing,total } = order
     
     return (
-        <section key={ '' } className="bg-gray-800 rounded-lg mt-1 ml-1 mr-1 font-bold  ">
+        <section key={ order.id } className="bg-gray-800 rounded-lg mt-1 ml-1 mr-1 font-bold  ">
         <div className="p-3 flex gap-10 justify-between">
           <div className="flex items-center">
             <div className="flex items-center justify-center w-14 h-14 rounded-full bg-slate-400">
@@ -28,8 +29,8 @@ export default function Order({order}){
                4 
           </div>
           <div className="p-3 flex gap-3">
-           <ButtonEdit></ButtonEdit>
-            <ButtonDelete></ButtonDelete>
+           <Link to={`/orderPendingEdit/${order.id}`}><ButtonEdit></ButtonEdit></Link> 
+            <ButtonDelete onClick={()=>deleteOrderMutation.mutate(order.id) }></ButtonDelete>
           </div>
         </div>
 </section>
