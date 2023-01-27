@@ -4,13 +4,11 @@ import TitlePage from "./globals/TitlePage"
 import MainContainer from "./globals/MainContainer"
 import Container from './globals/Container'
 import ListOrder from './Orders/ListOrder'
-
 import getOrders from "../services/woocommerceOrders"
-import Loading from "./Loading"
+
 export default function ScreenOrdersPending(){
 
-
-  const { isLoading,data,isError,error,isFetching  } = useQuery({
+  const { isLoading,data,isFetching  } = useQuery({
         queryKey:['ordersPending'],
         queryFn: ()=> getOrders({ status:'pending' })
     }) 

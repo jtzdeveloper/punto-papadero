@@ -1,7 +1,7 @@
 import {formatterPeso, getTakeOrderTotal,getTakeOrderTotalItems} from '../utils'
 import { toast } from 'react-toastify';
 import TitlePage from './globals/TitlePage'
-import {useQuery,useQueryClient,useMutation} from "@tanstack/react-query"
+import {useQueryClient,useMutation} from "@tanstack/react-query"
 import {createOrder} from '../services/woocommerceOrders'
 import MainContainer from './globals/MainContainer'
 import Container from './globals/Container'
@@ -11,7 +11,7 @@ import Loading from './Loading'
 
 const Mess = ({order})=> {
   return <div className='w-full h-full flex flex-col rounded'>
-    <span className='text-white text-xl'>Se ha creado exitosamente la orden N {order.id}</span>
+    <span className='text-white text-lg'>Se ha creado exitosamente la orden N {order.id}</span>
   </div>
 }
 

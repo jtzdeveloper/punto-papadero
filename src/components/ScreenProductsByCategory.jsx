@@ -1,18 +1,16 @@
 import { toast } from 'react-toastify';
-import { useParams,useMatch } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import getProductsByCategory  from '../services/woocommerceProducts'
-import  HeadInfo  from './HeadInfo'
 import TitlePage from './globals/TitlePage'
 import Button from './Button'
 import Loading from './Loading'
-import ListProducts from './Products/ListProducts'
-import { useEffect, useState } from 'react'
 import MainContainer from './globals/MainContainer'
 import Container from './globals/Container'
+
 export default function ScreenProductsByCategory({takeOrder,setTakeOrder}){
      const { id_category } = useParams()
-     const { isLoading,data,isError,error,isFetching  } = useQuery({
+     const { isLoading,data,isFetching  } = useQuery({
         queryKey:['productsByCategory'],
         queryFn: ()=> getProductsByCategory(id_category)
     })  
@@ -54,10 +52,8 @@ export default function ScreenProductsByCategory({takeOrder,setTakeOrder}){
         <MainContainer>
         {isLoading || isFetching ? <Loading message={'Cargando Productos'} /> :
             <Container width={100}>
-           
-            <div className='mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3'>
+                <div className='mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3'>
                 {
-                     
                     data.map(product=>(
                         <section key={product.id} className='flex flex-col bg-slate-700 rounded-xl px-2'> 
                             <div className='flex py-5'>
