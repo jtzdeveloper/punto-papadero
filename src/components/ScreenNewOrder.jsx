@@ -46,6 +46,7 @@ export default function ScreenNewOrder({takeOrder,setTakeOrder}){
 
   const createNewOrder = () => {
     if(takeOrder.line_items.length === 0 ){
+      toast("Debe Seleccionar al menos un producto",{...options,type:toast.TYPE.ERROR})
       return 
     } 
     const line_items = takeOrder.line_items.map(order=>(
