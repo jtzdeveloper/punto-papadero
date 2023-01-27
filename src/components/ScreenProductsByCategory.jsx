@@ -18,8 +18,10 @@ export default function ScreenProductsByCategory({takeOrder,setTakeOrder}){
     })  
     
     
-    const notify = ({product}) => toast.success("Se ha agregado el producto " + product.name ,{
-        position:"top-center"
+    const notify = ({product}) => toast("Se ha agregado el producto " + product.name ,{
+        position:"top-center",
+        type: toast.TYPE.SUCCESS,
+        style:{backgroundColor: "#0f172a" }
     })
     
     const takeOrderAddProduct = (product) => {

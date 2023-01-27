@@ -19,7 +19,7 @@ function App() {
 
         <Nav takeOrder={ takeOrder }/>
         <Screen>
-        <ToastContainer theme='dark' autoClose={1000} className={'w-full'} />
+        <ToastContainer style={{ width: "500px" }} hideProgressBar={true} autoClose={1000}  />
           <Routes>
             <Route path='/' element={ <ScreenCategories /> }></Route>
             <Route path='ordersPending' element={ <ScreenOrdersPending  /> }></Route>

@@ -26,8 +26,8 @@ export default function ScreenOrdersPending(){
         <>
           <TitlePage>Ordenes Pendientes</TitlePage>
           <MainContainer>
-            <Container isLoading={isLoading}>
-              <ListOrder data={data} deleteOrderMutation={deleteOrderMutation }  />
+            <Container>
+              <ListOrder isLoading={isLoading} data={data} deleteOrderMutation={deleteOrderMutation }  />
             </Container>
           </MainContainer>
        

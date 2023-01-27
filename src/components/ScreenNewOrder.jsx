@@ -1,17 +1,20 @@
 import {formatterPeso, getTakeOrderTotal,getTakeOrderTotalItems} from '../utils'
-
-
+import { toast } from 'react-toastify';
 import TitlePage from './globals/TitlePage'
-
 import {useQuery,useQueryClient,useMutation} from "@tanstack/react-query"
 import {createOrder} from '../services/woocommerceOrders'
-
-
 import MainContainer from './globals/MainContainer'
 import Container from './globals/Container'
 import ListProducts from './Products/ListProducts'
 import Button from './Button'
 import Loading from './Loading'
+
+const Mess = ({order})=> {
+  return <div className='w-full h-full flex flex-col rounded'>
+    <span className='text-white text-xl'>Se ha creado exitosamente la orden N {order.id}</span>
+  </div>
+}
+
 export default function ScreenNewOrder({takeOrder,setTakeOrder}){
   const takeOrderTotal = getTakeOrderTotal({takeOrder})
   const takeOrderTotalItems = getTakeOrderTotalItems({takeOrder})
@@ -19,16 +22,33 @@ export default function ScreenNewOrder({takeOrder,setTakeOrder}){
     
     
   const queryClient = useQueryClient()
-  const onload = () => {
+  const options = {
+    autoClose: true,
+    type: toast.TYPE.SUCCESS,
+    hideProgressBar: true,
+    position: toast.POSITION.TOP_CENTER,
+    style:{backgroundColor: "#0f172a" }
+    // and so on ...
+  }
+
+  const onload = (resp) => {
     setTakeOrder({line_items:[]})
     queryClient.invalidateQueries('ordersPending')
+    console.log(resp)
+    toast(<Mess order={resp.data} /> , options)
+    
   }
   const addOrderMutation = useMutation({
-    mutationFn:createOrder,onSuccess:()=>onload()
+    mutationFn: createOrder,onSuccess:(resp)=>onload(resp)
   })
 
+ 
+
   const createNewOrder = () => {
-     const line_items = takeOrder.line_items.map(order=>(
+    if(takeOrder.line_items.length === 0 ){
+      return 
+    } 
+    const line_items = takeOrder.line_items.map(order=>(
       order.type === 'simple' ? { product_id:order.id,quantity:order.selectedQuantity  } 
       : 
       { product_id:order.id_product,variation_id:order.id,quantity:order.selectedQuantity }

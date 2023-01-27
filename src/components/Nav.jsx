@@ -1,15 +1,28 @@
 import { Link, useLocation } from "react-router-dom"
 import { QueryClient, useQueryClient,useQuery } from "@tanstack/react-query"
+import {useNotificationCenter} from "react-toastify/addons/use-notification-center"
 import BubbleAlert from './BubbleAlert'
 import { getTakeOrderTotalItems } from '../utils/'
 import { useState } from "react"
 export default function Nav({ takeOrder }){
     const [countOrderPending,setCountOrderPending] = useState(0)
     const pathname = useLocation().pathname
+    const {
+        notifications,
+        clear,
+        markAllAsRead,
+        markAsRead,
+        add,
+        update,
+        remove,
+        find,
+        sort,
+        unreadCount
+    } = useNotificationCenter()
     const takeOrderTotalItems = getTakeOrderTotalItems({ takeOrder })
- const queryClient = useQueryClient() 
-   const data = queryClient.getQueriesData('ordersPending') 
-    console.log(data) 
+    const queryClient = useQueryClient() 
+    const data = queryClient.getQueriesData('ordersPending') 
+    console.log(notifications ) 
      
 /*   const countOrdersPending = data === [] ? data[0][1].length : 0 
     console.log */
@@ -35,7 +48,7 @@ export default function Nav({ takeOrder }){
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                         </svg>
-                        <BubbleAlert countProducts={countOrderPending} />
+                        <BubbleAlert countProducts={0} />
                         </div>
                         
                     </Link>
