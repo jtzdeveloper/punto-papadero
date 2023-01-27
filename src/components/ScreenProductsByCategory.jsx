@@ -51,7 +51,7 @@ export default function ScreenProductsByCategory({takeOrder,setTakeOrder}){
         <TitlePage>Productos</TitlePage>
         <MainContainer>
         {isLoading || isFetching ? <Loading message={'Cargando Productos'} /> :
-            <Container width={100}>
+            <Container>
                 <div className='mb-10 sm:mb-0 mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3'>
                 {
                     data.map(product=>(

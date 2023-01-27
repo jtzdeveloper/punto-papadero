@@ -8,7 +8,7 @@ export default function ListOrder({isLoading,data,deleteOrderMutation,isFetching
         isLoading || isFetching || deleteOrderMutation.isFetching  ? <Loading /> :
         data.length === 0 ?<ContainerMessageText>{MESSAGE_TEXT_ORDERS_PENDING}</ContainerMessageText> :
         data.map(order => (
-            <Order order={order} deleteOrderMutation={deleteOrderMutation} />
+            <Order key={order.id} order={order} deleteOrderMutation={deleteOrderMutation} />
         ))       
     )
 }
